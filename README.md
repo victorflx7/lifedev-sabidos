@@ -1,2 +1,8 @@
-# lifedev-sabidos
-React Desenvolvimento Web III - Victor Matos (@victoflx7), Victor Freitas (@Vitaminazz), Luiz Gustavo(@LuizGustavoReis), William Correa(@WilliamSCorrea), Adriano Brito(@LuanaBathory20), Daniel Manoel(@danielfatec2006)
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
