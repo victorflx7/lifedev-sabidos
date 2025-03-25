@@ -7,9 +7,16 @@ const Navbar = () => {
   return (
     <>
     <nav className={styles.navbar}>
-        <h2>Nome: {user.name}</h2>
-        <h2>Idade: {user.idade}</h2>
-        <button onClick={() => setUser((prevUser) => ({...prevUser, idade:prevUser.idade + 1}))}>Alterar Idade</button>
+      <ul coassName={styles.link_list}>
+          <li>Home</li>
+          <li>Register</li>
+          <li>New Post</li>
+          <li>Dashboard</li>
+          <li>About Us</li>
+          <li>
+            <button className={styles.logout}>Exit</button>
+          </li>
+      </ul>
     </nav>
     </>
   )
