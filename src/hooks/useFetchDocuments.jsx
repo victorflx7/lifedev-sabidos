@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
-import { db } from "../firebase/config"
+
+import {db} from "../firebase/config"
 import {
-    collect,
+    collect, 
+
     query,
     orderBy,
     onSnapshot,
@@ -10,4 +12,3 @@ import {
 
 export const useFetchDocuments = () => {
 
-}

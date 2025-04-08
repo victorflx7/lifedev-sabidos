@@ -1,8 +1,11 @@
-import { useState, useEffect, useReducer } from "react"
-import { db } from "../firebase/config"
-import { doc, deleteDoc } from "firebase/firestore"
 
-export const useDeleteDocument = () => {
+
+
+import { useState, useEffect, useReducer } from "react";
+import {db} from "../firebasee/config"
+import {doc, delteDoc} from "firebase/firestore"
+
+export const useDeleteDocument = () =>{
 
 
 }
