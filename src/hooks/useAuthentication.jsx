@@ -1,11 +1,11 @@
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
   signOut,
 } from "firebase/auth";
 
+import { auth } from "../firebase/config"
 import { useState, useEffect } from "react";
 
 export const useAuthentication = () => {
@@ -13,7 +13,6 @@ export const useAuthentication = () => {
   const [loading, setLoading] = useState(null);
   const [cancelled, setCancelled] = useState(false);
 
-  const auth = getAuth();
 
   function checkIfIsCancelled() {
     if (cancelled) {
