@@ -3,9 +3,31 @@
     box-shadow: rgba(0, 0, 0, .15) 0px -2px 10 0px;
     justify-content: space-between;
     align-items: center;
-    padding: .5em 2em;
+    padding: 15px 40px;
 }
  
+.logo {
+    font-size: 20px;
+}
+
+.navLinks {
+display: flex;
+gap: 20px;
+align-items: center;
+}
+
+.navLinks a {
+text-decoration: none;
+color: black;
+}
+
+.logout {
+    background-color: blanchedalmond;
+    border: #000;
+    color: bisque;
+    cursor: pointer;
+}
+
 .brand{
     font-size: 1.2em;
 }
@@ -30,7 +52,7 @@
 }
 .logout{
     width: 60px;
-    background-color: darkturquoise;
+    background-color: rgb(121, 6, 69);
     border: none;
     border-radius: 10px;
     padding: 5px;
