@@ -22,11 +22,10 @@ const Register = () => {
             email,
             password
         }
+        const res = await createUser(user)
+        console.table(res)
     }
-    const res =  createUser(user)
-
-    console.table(res)
-    navigate("/Login")
+    navigate("/Register")
 
     useEffect(()=>{
         if(authError){

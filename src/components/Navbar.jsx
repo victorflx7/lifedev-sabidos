@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import { Navlink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
@@ -9,15 +9,15 @@ const Navbar = () => {
     <>
     <nav className={styles.navbar}>
       <ul coassName={styles.link_list}>
-         <Navlink to="/" className={styles.brand} activeClassName ={styles.active}>
+         <NavLink to="/" className={styles.brand} activeClassName ={styles.active}>
          <li><span>Nomad</span>Life</li>
-         </Navlink>
+         </NavLink>
          <Navlink to="/login" className={styles.link} activeClassName ={styles.active}>
          <li><span>Login</span></li>
          </Navlink>
-         <Navlink to="/register" className={styles.link} activeClassName ={styles.active}>
+         <NavLink to="/register" className={styles.link} activeClassName ={styles.active}>
          <li><span>Register</span></li>
-         </Navlink>
+         </NavLink>
           <li>
             <button className={styles.logout}>Exit</button>
           </li>
