@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import { Navlink } from 'react-router-dom'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
@@ -8,11 +9,15 @@ const Navbar = () => {
     <>
     <nav className={styles.navbar}>
       <ul coassName={styles.link_list}>
-          <li>Home</li>
-          <li>Register</li>
-          <li>New Post</li>
-          <li>Dashboard</li>
-          <li>About Us</li>
+         <Navlink to="/" className={styles.brand} activeClassName ={styles.active}>
+         <li><span>Nomad</span>Life</li>
+         </Navlink>
+         <Navlink to="/login" className={styles.link} activeClassName ={styles.active}>
+         <li><span>Login</span></li>
+         </Navlink>
+         <Navlink to="/register" className={styles.link} activeClassName ={styles.active}>
+         <li><span>Register</span></li>
+         </Navlink>
           <li>
             <button className={styles.logout}>Exit</button>
           </li>
