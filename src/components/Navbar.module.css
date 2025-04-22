@@ -36,3 +36,8 @@
     padding: 5px;
     cursor: pointer;
 }
+
+.exit {
+    border:nome;
+    background-color: transparent;
+}
