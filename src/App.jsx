@@ -9,7 +9,7 @@ import { AuthProvider } from './components/context/AuthContext';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard';
-import About from './pages/About/About';
+import About from './pages/about/About';
 import Post from './pages/Post/Post.jsx';
 import CreatePost from './pages/CreatePost/CreatePost';
 import EditPost from './pages/EditPost/EditPost.jsx';
