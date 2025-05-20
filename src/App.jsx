@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import { onAuthStateChanged } from 'firebase/auth'
 import Home from './pages/Home/Home'
 import { BrowserRouter, Routes, Route ,Navigate } from 'react-router-dom';
-import { AuthProvider } from './components/context/AuthContext';
+import { AuthProvider } from '../context/AuthContext.jsx';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -24,7 +24,7 @@ function App() {
   const { Auth } = useAuthentication()
   const loading = user === undefined
   useEffect(() => {
-    onAuthStateChanged(Auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       setUser(user)
     })
   }, { Auth })
@@ -46,6 +46,8 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/dashboard" element={ user ? <Dashboard /> : <Navigate to="/login"/>} />
                 <Route path="/posts/:id" element={<Post />} />
+                <Route path="/posts/create" element={ user ? <CreatePost /> : <Navigate to="/login"/>} />
+                <Route path="/posts/create" element={! user ? <CreatePost /> : <Navigate to="/"/>} />
                 <Route path="/posts/create" element={ user ? <CreatePost /> : <Navigate to="/login"/>} />
                 <Route path="/posts/edit/:id" element={ user ? <EditPost /> : <Navigate to="/login"/>} />
               </Routes>
