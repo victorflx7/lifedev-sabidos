@@ -15,7 +15,6 @@ import CreatePost from './pages/CreatePost/CreatePost';
 import EditPost from './pages/EditPost/EditPost.jsx';
 import { useState, useEffect } from 'react';
 import './App.css'
-
 import { useAuthentication } from './hooks/useAuthentication'
 
 
