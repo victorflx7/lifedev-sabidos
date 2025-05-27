@@ -23,7 +23,7 @@ function App() {
   const { Auth } = useAuthentication()
   const loading = user === undefined
   useEffect(() => {
-    onAuthStateChanged(Auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       setUser(user)
     })
   }, { Auth })
@@ -46,6 +46,8 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/dashboard" element={ user ? <Dashboard /> : <Navigate to="/login"/>} />
                 <Route path="/posts/:id" element={<Post />} />
+                <Route path="/posts/create" element={ user ? <CreatePost /> : <Navigate to="/login"/>} />
+                <Route path="/posts/create" element={! user ? <CreatePost /> : <Navigate to="/"/>} />
                 <Route path="/posts/create" element={ user ? <CreatePost /> : <Navigate to="/login"/>} />
                 <Route path="/posts/edit/:id" element={ user ? <EditPost /> : <Navigate to="/login"/>} />
               </Routes>
