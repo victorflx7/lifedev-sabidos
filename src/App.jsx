@@ -5,7 +5,7 @@ import Footer from './components/Footer'
 import { onAuthStateChanged } from 'firebase/auth'
 import Home from './pages/Home/Home'
 import { BrowserRouter, Routes, Route ,Navigate } from 'react-router-dom';
-import { AuthProvider } from './components/context/AuthContext';
+import { AuthProvider } from './context/AuthContext.jsx';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Dashboard from './pages/Dashboard/Dashboard';
@@ -15,7 +15,6 @@ import CreatePost from './pages/CreatePost/CreatePost';
 import EditPost from './pages/EditPost/EditPost.jsx';
 import { useState, useEffect } from 'react';
 import './App.css'
-
 import { useAuthentication } from './hooks/useAuthentication'
 
 
@@ -29,8 +28,9 @@ function App() {
     })
   }, { Auth })
 
-  if (loading) {
+  if (loadingUser) {
     return <p>Carregando</p>
+
   }
   return (
     <>
