@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom"
+
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 import styles from "./PostDetail.module.css"
 
 const PostDetail = ({ post }) => {
     return (
+
         <>
             <div className={styles.post_detail}>
                 <img src={post.image} alt={post.title} />
@@ -24,3 +28,4 @@ const PostDetail = ({ post }) => {
 }
 
 export default PostDetail
+

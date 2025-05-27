@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom'
 import {useAuthValue} from '../context/AuthContext'
 import { useAuthentication } from '../hooks/useAuthentication'
 const Navbar = () => {
-  const { logout } = useAuthentication();
-  const { user } = useAuthValue();
-  console.log(user)
+const { logout } =useAuthentication()
+const { user } = useAuthValue()
+console.log(user)
+
   return (
     <>
       <nav className={styles.navbar}>
@@ -37,8 +38,7 @@ const Navbar = () => {
             About
           </NavLink></li>
       </>)}
-
-          <button oncClick={logout} className={styles.exit}>Exit</button>
+          <button onClick={logout} className={styles.exit}>Exit</button>
         </ul>
       </nav>
     </>
