@@ -41,11 +41,14 @@ function App() {
             <div className="container">
               <Routes>
                 <Route path="/" element={<Home />} />
-               <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>} />
+                <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>} />
                 <Route path="/register" element={!user ? <Register /> : <Navigate to="/"/>} />
                 <Route path="/about" element={<About />} />
+                <Route path="/post/:id" element={user ? <Post/> : <Navigate to="/login"/>} />
+                <Route path="/search" element={user ? <search/>:<Navigate to='login'/>} />
                 <Route path="/dashboard" element={ user ? <Dashboard /> : <Navigate to="/login"/>} />
                 <Route path="/posts/:id" element={<Post />} />
+                <Route path='/post/:id' element={user? <CreatePost/> : <Navigate to="/login"/>} />
                 <Route path="/posts/create" element={ user ? <CreatePost /> : <Navigate to="/login"/>} />
                 <Route path="/posts/create" element={! user ? <CreatePost /> : <Navigate to="/"/>} />
                 <Route path="/posts/create" element={ user ? <CreatePost /> : <Navigate to="/login"/>} />
