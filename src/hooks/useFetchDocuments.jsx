@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import {db} from "../firebase/config"
 import {
-    collect, 
+    collection, 
     query,
     orderBy,
     onSnapshot,
@@ -14,6 +14,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
   const [loading, setLoading] = useState(null)
 
   const [cancelled, setCancelled] = useState(false)
+
   useEffect(() => {
     async function loadData(){
         if(cancelled){ return

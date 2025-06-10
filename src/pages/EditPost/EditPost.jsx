@@ -1,4 +1,4 @@
-import styles from "./EditPost.css";
+import styles from "./EditPost.jsx";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
 import { useFetchDocument } from "../../hooks/useFetchDocument";

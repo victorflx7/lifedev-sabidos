@@ -11,7 +11,7 @@ console.log(user)
     <>
       <nav className={styles.navbar}>
         <ul className={styles.link_list}>
-          <NavLink to="/" className={styles.brand} activeClassName={styles.active}>
+          <NavLink to="/" className={({isActive}) => (isActive ? styles.active : styles.brand)}>
             <li><span>Life</span>Dev</li>
           </NavLink>
 
