@@ -12,7 +12,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import CreatePost from './pages/CreatePost/CreatePost';
 import Post from './pages/Post/Post';
 import Search from './pages/Search/Search'
-import About from './pages/About/About';
+import About from './pages/about/About';
 import './App.css'
 import { useAuthentication } from './hooks/useAuthentication'
 
