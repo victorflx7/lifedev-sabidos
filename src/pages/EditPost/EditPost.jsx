@@ -1,9 +1,10 @@
-import styles from "./EditPost.css";
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
 import { useUpdateDocument } from "../../hooks/useUpdateDocument"; 
-import { useState, useEffect } from "react";
+import styles from "./EditPost.module.css";
+import { updateDoc } from "firebase/firestore";
 
 const EditPost = () => {
   const { id } = useParams();
@@ -20,54 +21,116 @@ const EditPost = () => {
  
   useEffect(() => {
     if (post) {
-      setTitle(post.title || "");
-      setImage(post.image || "");
-      setBody(post.body || "");
-      setTags(post.tags || []);
+      setTitle(post.title);
+      setImage(post.image);
+      setBody(post.body);
+      const textTags = post.tags.join(", ")
+      setTags(textTags)
     }
   }, [post]);
+  const {user} = useAuthValue()
+  const navigate = useNavigate()
+  const {updateDocument, response} = useUpdateDocument("posts")
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setFormError("")
+    try {
+      new URL(image)
+    } catch (error) {
+      setFormError("A imagem precisa ser uma URL.")
+    }
+    const tagsArray = tags.split(",").map((tag) => tag.trim())
+
+    console.log(tagsArray)
+
+    console.log({
+      title,
+      image,
+      body,
+      tags: tagsArray,
+    })
+
+    const data = {
+      title,
+      image,
+      body,
+      tags: tagsArray,
+    }
+    console.log(post)
+    updateDocument(id, data)
+    navigate("/dashboard")
+  }
 
   return (
-    <div>
-      <h1>Edit Post</h1>
-      {}
-      <form>
-        <label>
-          Title:
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-        </label>
-        <label>
-          Image URL:
-          <input
-            type="text"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-          />
-        </label>
-        <label>
-          Body:
-          <textarea
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-          ></textarea>
-        </label>
-        <label>
-          Tags:
-          <input
-            type="text"
-            value={tags.join(", ")}
-            onChange={(e) => setTags(e.target.value.split(",").map(tag => tag.trim()))}
-          />
-        </label>
-        {formError && <p className="error">{formError}</p>}
-        <button type="submit">Update Post</button>
-      </form>
-    </div>
-  );
-};
+        <div className={styles.edit_post}>
+            {post && (
+                <>
+                    <h2>Editando post: {post.title}</h2>
+                    <p>Altere os dados do post como desejar</p>
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            <span>Título:</span>
+                            <input
+                                type="text"
+                                name="text"
+                                required
+                                placeholder="Pense num bom título..."
+                                onChange={(e) => setTitle(e.target.value)}
+                                value={title}
+                            />
+                        </label>
+                        <label>
+                            <span>URL da imagem:</span>
+                            <input
+                                type="text"
+                                name="image"
+                                required
+                                placeholder="Insira uma imagem que representa seu post"
+                                onChange={(e) => setImage(e.target.value)}
+                                value={image}
+                            />
+                        </label>
+                        <p className={styles.preview_title}>Preview da imagem atual:</p>
+                        <img
+                            className={styles.image_preview}
+                            src={post.image}
+                            alt={post.title}
+                        />
+                        <label>
+                            <span>Conteúdo:</span>
+                            <textarea
+                                name="body"
+                                required
+                                placeholder="Insira o conteúdo do post"
+                                onChange={(e) => setBody(e.target.value)}
+                                value={body}
+                            ></textarea>
+                        </label>
+                        <label>
+                            <span>Tags:</span>
+                            <input
+                                type="text"
+                                name="tags"
+                                required
+                                placeholder="Insira as tags separadas por vírgula"
+                                onChange={(e) => setTags(e.target.value)}
+                                value={tags}
+                            />
+                        </label>
+                        {!response.loading && <button className="btn">Editar</button>}
+                        {response.loading && (
+                            <button className="btn" disabled>
+                                Aguarde.. .
+                            </button>
+                        )}
+                        {(response.error || formError) && (
+                            <p className="error">{response.error || formError}</p>
+                        )}
+                    </form>
+                </>
+            )}
+        </div>
+    )
+}
 
-export default EditPost;
+export default EditPost

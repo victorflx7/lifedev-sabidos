@@ -1,11 +1,10 @@
-import React from "react"
 import styles from "./Search.module.css"
 import Post from "../Post/Post"
 
 import { useFetchDocuments } from "../../hooks/useFetchDocuments"
-import {useQuery} from "../../hooks/useQuery"
+import { useQuery } from "../../hooks/useQuery"
 
-import PostDetail from 'react-router-dom'
+import PostDetail from '../../components/PostDetail'
 import { Link } from "react-router-dom"
 
 
@@ -13,7 +12,7 @@ const search = () => {
     const query = useQuery()
     const search = query.get("q")
 
-    const { documents: posts} = useFetchDocuments("posts", search)
+    const { documents: posts } = useFetchDocuments("posts", search)
     return (
         <div className={styles.search_container}>
             <h1>Resultado encontrados{search}</h1>
@@ -35,3 +34,4 @@ const search = () => {
         </div>
     );
 }
+export default search

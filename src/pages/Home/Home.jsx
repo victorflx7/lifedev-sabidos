@@ -1,9 +1,8 @@
-import React from 'react'
 import styles from './Home.module.css'
 import { useFetchDocument } from '../../hooks/useFetchDocument'
 import { useNavigate } from 'react-router-dom'
-import Postdetail from '../../components/Postdetail/Postdetail'
-
+import Postdetail from '../../components/PostDetail'
+import { useState } from 'react'
 
 const Home = () => {
   const { documents: posts, loading } = useFetchDocument()
@@ -16,15 +15,13 @@ const Home = () => {
     if (query) {
       return navigate(`/search?q=${query}`)
     }
-
   }
   console.log(loading)
   return (
     <>
-      <div>
-
+      <div className={styles.home}>
         <h1>Veja os nossos posts mais recentes</h1>
-        <form className={styles.search_Form} onSubmit={handleSubmit}>
+        <form className={styles.search_form} onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Ou busque por tags..."
@@ -34,14 +31,17 @@ const Home = () => {
         </form>
         <div className="post-list">
           {loading && <p>Carregando...</p>}
-          {posts && posts.length === 0 && (<div className={styles.noposts}>
-            <p>Não foram encontrados posts</p>
-            <Link to="/posts/create" className="btn">Criar primeiro post</Link>
-          </div>
+          {posts && posts.length === 0 && (
+            <div className={styles.noposts}>
+              <p>Não foram encontrados posts</p>
+              <Link to="/posts/create" className="btn">
+                Criar primeiro post
+              </Link>
+            </div>
           )}
-          {posts && posts.map((post) => (
-            <Postdetail key={post.id} post={post} />
-          ))}
+          {posts && posts.map((post) =>
+            <Postdetail key={post.id} post={post}
+            />)}
         </div>
       </div>
     </>
